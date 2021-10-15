@@ -30,9 +30,11 @@ public class ImcFrame extends JFrame {
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("Calculadora IMC");
 		this.setLayout(null);
-		this.setVisible(true);
 		
 		renderComponents();
+		
+		this.setVisible(true);
+		
 		handleActionListeners();
 	}
 	
