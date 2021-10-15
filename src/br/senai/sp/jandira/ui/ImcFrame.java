@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import java.awt.Font;
+import java.text.DecimalFormat;
 
 public class ImcFrame extends JFrame {
 	private JLabel lblTitulo;
@@ -26,7 +27,7 @@ public class ImcFrame extends JFrame {
 	
 	
 	public ImcFrame() {
-		this.setSize(400,450);
+		this.setSize(415,450);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("Calculadora IMC");
 		this.setLayout(null);
@@ -98,12 +99,14 @@ public class ImcFrame extends JFrame {
 	
 	private void calcular() {
 		Imc imc = new Imc();
-		imc.setAltura(Double.parseDouble(txtAltura.getText()));
-		imc.setPeso(Double.parseDouble(txtPeso.getText()));
+		double altura = Double.parseDouble(txtAltura.getText());
+		double peso = Double.parseDouble(txtPeso.getText());
 		
-		imc.calcular();
+		imc.calcular(peso, altura);
 		
-		lblImcResultado.setText(Double.toString(imc.getValor()));
+		DecimalFormat df = new DecimalFormat("###.##");		
+		
+		lblImcResultado.setText(df.format(imc.getValor()));
 		lblStatusResultado.setText(imc.getStatus());
 	}
 }
