@@ -109,9 +109,6 @@ public class ImcFrame extends JFrame {
 		this.getContentPane().add(lblImcResultado);
 		this.getContentPane().add(lblStatus);
 		this.getContentPane().add(lblStatusResultado);
-		
-		
-		// this.getContentPane().add();
 	}
 
 	public void handleActionListeners() {
@@ -124,11 +121,13 @@ public class ImcFrame extends JFrame {
 		double peso = Double.parseDouble(txtPeso.getText());
 		
 		imc.calcular(peso, altura);
-		imc.setStatus();
 		
 		DecimalFormat df = new DecimalFormat("###.##");		
 		
 		lblImcResultado.setText(df.format(imc.getValor()));
 		lblStatusResultado.setText(imc.getStatus());
+		
+		lblImcResultado.setForeground(imc.getStatusColor());
+		lblStatusResultado.setForeground(imc.getStatusColor());
 	}
 }
